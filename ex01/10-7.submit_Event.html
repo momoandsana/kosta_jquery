@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+    $(function(){
+        $("#form").submit(function(){
+            let id=$('#id').val();
+            let pw=$('#pwd').val();
+            
+            if(!id)
+            {
+                alert("아이디를 입력해주세요");
+                $('#id').focus();
+                return false;
+                // event.preventDefault(); return false랑 같은 효과
+            }
+            if(!pw)
+            {
+                alert("비번을 입력해주세요");
+                $('#pw').focus();
+                return false;
+            }
+            
+    });
+});
+</script>
+
+</head>
+<body>
+<h1>submit 이벤트</h1>
+
+<form id="form" name="form"  action="http://www.daum.net">
+    아이디 : <input type="text" id="id" name="id"/> <br>
+   비밀번호 : <input type="text" id="pwd" name="pwd"/> <br>
+   <input type="submit" value="로그인"/>
+    <input type="reset" value="취소"/>
+ </form>	
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- onload = ()=> {
+//     document.getElementById("loginForm").addEventListener("submit", function(event) {
+//         event.preventDefault();
+
+//         const userId = document.getElementById("userId").value;
+//         const userPw = document.getElementById("userPw").value;
+
+//         if (!userId) {
+//             alert("아이디를 입력해주세요");
+//             document.getElementById("userId").focus();
+//             return;
+//         }
+
+//         if (!userPw) {
+//             alert("비밀번호를 입력해주세요");
+//             document.getElementById("userPw").focus();
+//             return;
+//         }
+
+//         alert("입력유무체크 완료");
+//     });
+// }; -->
+
+
+
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		//$("*").css("color","red");
+
+		// $("h3,h4").css("font-family","궁서체");//jQuery에서는 font-family fontFamily 모두 가능
+		// $("h3")
+		// .css("border","double red 5px")
+		// .css("text-decoration","underline")
+		// .css("color","blue");
+
+		// $(".div").css({
+		// 	color: "blue",
+		// 	fontFamily: "궁서체",
+		// 	textDecoration: "underline"
+		// });
+
+		//하위 element 찾기
+		// $("div ol li").css("color","orange");
+
+		// eq, gt, lt odd even
+		// $("div ol li:eq(2)").css("color","orange");
+		// $("div ol li:gt(1)").css("color","orange");
+
+		// $("div ol li:first").css("color","orange");
+		// $("div ol li:last").css("color","orange");
+
+		// $("div ol li:even").css("color","blue");
+		// $("div ol li:odd").css("color","red");
+
+		$("div ol li:not(:odd)").css("color","red"); // 홀수의 반대->짝수
+	});
+</script>
+
+</head>
+<body>
+	
+<h3>jQuery 기본 selector</h3>
+<h4>웹 프로그래밍</h4>
+<div class="div">
+	<ol>
+     	<li>jsp</li>
+		<li id="tag">javaScript</li>
+		<li>jQuery</li>
+		<li>Ajax</li>
+	</ol>
+</div>
+	
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$(function(){
+		$("[value=확인]").click(function(){ //버튼
+			//선택된 취미
+			//alert($(":checkbox:checked").length); //체크박스 중에 체크된 것들의 개수
+
+			//jQuery의 반복문=each()
+			// 1.
+			// $(selector).each(function(index,item){
+
+			// });
+
+			// 2.
+			// const arr=[1,2,3,4,5];
+			// $.each(반복대상, function(index,item){
+
+			// })
+
+			let info="취미 : "
+
+			$(":checkbox:checked").each(function(index,item){ // forEach랑 index,item 반대임				
+				// console.log(item,index);
+				// item.value;
+				//$(this).val();여기서 this는 호출한 주체인 $(":checkbox:checked") 
+				info+=item.value;
+			});
+
+			//성별
+			info+="<br>성별 : "+$(":radio:checked").val(); // radio에서 checked인 경우
+
+
+			//div영역에 값 넣기
+			$("div").html(info);
+
+		
+
+
+		});
+
+	})
+
+</script>
+</head>
+
+<body>
+	<h1>click 이벤트</h1>
+<form>
+	취미 : 
+	   <input type="checkbox"  name="hobby" value="등산">등산
+	   <input type="checkbox"  name="hobby" value="낚시">낚시
+	   <input type="checkbox"  name="hobby" value="수영">수영
+	   <input type="checkbox"  name="hobby" value="골프">골프
+	   <input type="checkbox"  name="hobby" value="축구">축구
+	   <input type="checkbox"  name="hobby" value="농구">농구
+	<p/>
+	성별 : 
+	 <input type="radio" name="gender" value="남자"/> 남자
+	 <input type="radio" name="gender" value="여자"/> 여자
+	
+	 <input type="button" value="확인"  />
+ </form>
+ 	
+<h2>선택 결과</h2>
+<div></div>
+
+</body>
+</html>
+
+
+
+
+
+ <!-- 버튼 하나 누르면 선택한 값들을 가지고 와서 출력 -->
+
+ <!-- <input type="checkbox" id="myCheckbox" checked> -->
+  <!-- 체크박스는 checked 라는 속성이 기본으로 존재한다 -->
+ <!-- <script>
+	document.querySelector("[name=all]").addEventListener("click", (event)=>{
+		//현재 체크박스가 선택되었으면 모든 hobby를 선택(checked=true)
+		//아니면 체크 해제(checked=flase);
+
+		// if(event.target.checked)
+		// {
+		// 	let allHobby=document.querySelectorAll("[name=hobby]");
+			
+		// 	for(let i=0; i<allHobby.length;i++)
+		// 	{
+		// 		allHobby[i].checked=true;
+		// 	}
+		// }
+		// else
+		// {
+		// 	let allHobby=document.querySelectorAll("[name=hobby]");
+			
+		// 	for(let i=0; i<allHobby.length;i++)
+		// 	{
+		// 		allHobby[i].checked=false;
+		// 	}
+		// }
+
+		//item이 체크박스
+		document.querySelectorAll("[name=hobby]").forEach((item,index)=>{
+			item.checked=event.target.checked;
+			// event.target.checked는 하나인데 이거를 여러  item을 순회하면서 넣어줌
+		});
+
+	});
+
+	document.querySelector("[value=클릭]").addEventListener("click",(event)=>
+	{
+		//hobby에 선택된 체크박스의 value를 모아서 div영역에 넣기
+		let hobbyStr="취미는 : ";
+
+		// name=hobby는 여러 개이기 때문에 배열로 관리->forEach 사용가능
+		document.querySelectorAll("[name=hobby]:checked").forEach((item,index)=>{
+				hobbyStr+=item.value+" , "
+		});
+
+		// document.querySelectorAll("[name=hobby]").forEach((item,index)=>{
+		// 	if(item.checked)
+		// 	{
+		// 		hobbyStr+=item.value+" , "
+		// 	}
+		// });
+
+		document.getElementById("result").innerHTML=hobbyStr;
+	});
+
+
+
+
+ </scrip>
+   -->

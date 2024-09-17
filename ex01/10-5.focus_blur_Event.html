@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+  $(function(){
+    //이벤트등록
+    $("[name=name]")
+    .focus(function(){
+      //css적용
+      $(this).css({
+        border:"dotted 5px blue",
+        backgroundColor:"pink"
+      });// [name=name]이 호출함 this는 [name=name]
+    })
+    .blur(function(){
+      //textbox의 값을 읽어서 div영역에 넣기
+      console.log(this); // input
+      console.log($(this)); // input
+      console.log(event.target);// input
+
+      //폼요소에 있는 value 조회할 때
+      // javascript      jQuery
+      // this.value      $(this).val()
+
+      // 폼요소를 제외한 다른 element들 content 조회할 때
+      // javascript      jQuery
+      // this.innerHTML  $(this).html()
+      // this.innerText  $(this).text()
+
+      let text=$(this).val(); // 호출한 주체( $("[name=name]"))
+      if(!text)
+      {
+        alert("값 입력해");
+        // $(this).focus();
+        return;
+      }
+      
+      let re=$("#result").html()+"<h4>"+text+"</h4>"
+      $("#result").html(re);
+
+      //text박스 지우기
+      $(this).val("");
+
+    });
+  });
+</script>
+</head>
+<body>
+<h1>focus 와 blur 이벤트</h1>
+
+<form>
+   이름 : <input type="text" name="name">	
+ </form>	
+ 
+ <p>
+ <div id="result"></div>
+
+</body>
+</html>
+
+
+
+
+
+
