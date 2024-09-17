@@ -24,6 +24,36 @@
   </table>
     <div id="lblError">암호를 입력하시오.</div>
 
+    <script>
+        $(function(){
+            var pwd=$('#pwd');
+            var pwdConfirm=$('#pwdConfirm');
+            var lblError=$('#lblError');
+
+            pwd.keyup(()=>{
+                if(pwd.val().length>0)
+                {
+                    lblError.text(''); // 암호를 입력했으니까 문구가 필요하지 않다
+                }
+                else
+                {
+                    lblError.text('암호를 입력하시오').css('color','red'); 
+                }
+            })
+
+            pwdConfirm.keyup(()=>{
+                if(pwd.val() != pwdConfirm.val())
+                {
+                    lblError.text('비밀번호가 일치하지 않습니다').css('color','red');
+                }
+                else
+                {
+                    lblError.text('비밀번호가 일치합니다').css('color','blue');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
 
