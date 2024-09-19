@@ -4,7 +4,56 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<script src="../js/jquery-3.6.1.min.js"></script>
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+  $(function(){
+    $("#jumin1").on("keyup",function(){
+      //숫자유무 체크해서 숫자 아니면 마지막 글자를 지운다
+      numberCheck($(this));
+
+      //6자리가 되면 커서 이동
+      if($(this).val().length===6) $("#jumin2").focus();
+
+    });
+
+    $("#jumin2")
+    .on("keyup",function(){
+      //숫자유무 체크해서 숫자 아니면 마지막글자를 지운다->위에랑 공통의 기능이기 때문에 함수를 만들어서 활용하겠다
+      numberCheck($(this));
+    })
+    .on("blur",function(obj){//커서를 잃었을 때
+      //첫 글자가 1이면 남자, 2이면 여자를 checked해준다
+      let firstCh=$(this).val().charAt(0); // val을 이용해서 값을 처리해야 한다
+
+      if(firstCh ==="1")
+      {
+        $("#man").prop("checked",true);
+      }
+      else
+      {
+        $("#woman").prop("checked",true);
+      } 
+    });
+  
+    
+
+    //숫자유무 체크해서 숫자 아니면 마지막글자를 지운다
+    const numberCheck=function(obj)
+    {
+      let value=obj.val(); //여기서 가져온 값은 string
+      if(isNaN(value))
+      {
+        let sliceValue=value.substr(0,value.length-1);//마지막 글자는 자르고 나머지를 다시 변수에 넣고 그 값을 다시 반영
+        obj.val(sliceValue); //
+      }
+    }
+  
+  
+  
+  
+  
+  });
+</script>
 </head>
 
 <body>

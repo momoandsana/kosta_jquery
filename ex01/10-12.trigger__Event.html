@@ -15,9 +15,28 @@
                 color: red;
             }
         </style>
-        <script src="../js/jquery-3.6.1.min.js"></script>
+        <script src="../js/jquery-3.7.1.js"></script>
 
+        <script>
+            $(function(){
+                $("button:first").on("click",function(){// 버튼이 눌리면 span의 값이 바뀐다
+                    increment($("span:first"));// span중에 첫 번째
 
+                    //trigger를 이용해서 이미 등록되어 있는 다른 이벤트를 강제로 호출한다
+                    //$(selector).trigger("이벤트종류")
+                    $("button:last").trigger("click");
+                });
+
+                $("button:last").on("click",function(){
+                    increment($("span:last"));
+                });
+
+                const increment=function(obj){ // obj=$("span:???")
+                    let no=parseInt(obj.text())+1; // 문자이기 때문에 숫자로 바꿔서 1을 더해야 한다
+                    obj.text(no);
+                }
+            });
+        </script>
         
     </head>
     <body>

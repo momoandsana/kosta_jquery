@@ -3,8 +3,43 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="../js/jquery-3.6.1.min.js"></script>
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+	$(document).ready(function()
+{
+	//정적요소에 이벤트 적용방법
+	//$(#checkAll").click(function(){});
 
+	/*
+	정적요소+동적요소에 이벤트 적용
+
+	1. 정적요소에 이벤트 등록
+	$(이벤트주체selector).on("이벤트종류",function(){}); // 여기서 function은 콜백함수
+
+	2. 동적요소에 이벤트 등록
+	$(document).on("에빈트종류",이벤트주체selector,function(){});
+
+	정적요소  vs 동적요소
+	이미 만들어져 있으면 정적
+	새로 만들어지면 동적
+
+	*/
+	$("#chkAll").on("click",function(){
+		//alert($(this));
+
+		$(":checkbox").prop("checked",this.checked); 
+		/*
+		property의 prop
+		 여러개의 선택자를 찾아도 알어서 적용해준다. 모든 체크박스를 선택해줌. 지금 chkAll 의 값이 들어감
+		 this.checked 로 하면 전체선택/해지가 가능함
+		 $(this)로 설정하면 전체선택은 가능한데 다시 전체선택 버튼을 누른다고 전체해제가 되지는 않는다
+		 */
+		this.checked ? $("span").text("전체해제") : $("span").text("전체선택"); // 전체선택/전체해제로 문구를 바꾸기(상황에 따라)
+		
+});
+
+});
+</script>
 </head>
 
 <body>
