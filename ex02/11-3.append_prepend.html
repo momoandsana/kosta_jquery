@@ -10,8 +10,37 @@
 
  <script>
 	$(function(){
-		$("h3").css({backgroundColor:"red"})
-	})
+		//$("h3").css({backgroundColor:"red"})
+		let bgColor=["red","green","blue","pink"];
+
+		$("h3").each(function(index,element)
+		{
+			$(this).css({backgroundColor:bgColor[index]});
+		});
+
+		//추가할 이미지 준비
+		let img="<img src='img/jquery.jpg' alt='jquery 이미지'>";
+
+		$("#pre").click(function()
+		{
+			$(".a").prepend(img);
+		});	// 앞에 자식 추가
+
+		$("#app").click(function()
+		{
+			$(".b").append(img);
+		});	// 뒤에 자식 추가
+
+		$("#before").click(function()
+		{
+			$(".c").before(img);
+		});	// 형제 노드를 기준으로 앞에 추가
+
+		$("#after").click(function()
+		{
+			$(".d").after(img);
+		});	// 형제 노드를 기준으로 뒤에 추가
+	});
  </script>
 
 </head>

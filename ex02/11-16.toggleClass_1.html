@@ -4,21 +4,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	.hidden{display:none;}
-	
+	/* .hidden 클래스를 사용해 요소를 숨긴다 */
+	.hidden {
+		display: none;
+	}
 </style>
-<script src="../js/jquery-3.6.1.min.js"></script>
-
+<!-- jQuery 라이브러리 연결 -->
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+	$(function(){
+		// 버튼 클릭 시 이벤트 처리
+		$("#btn").click(function(){
+			// #myLayer 요소에 hidden 클래스를 토글한다 (숨기기/보이기 전환)
+			$("#myLayer").toggleClass("hidden");
+		})
+	});
+</script>
 </head>
 <body>
-<h1>toggleClass 실습</h1>
+	<h1>toggleClass 실습</h1>
+	
+	<!-- 버튼 클릭 시 이미지를 숨기거나 다시 표시 -->
 	<input type="button" value="클릭하세요." id="btn"> </p>
+
+	<!-- 숨기기/보이기 대상 이미지 -->
 	<img src="img/jpup_id.jpg" id="myLayer"/>
     
 </body>
 </html>
 
+toggleClass 의 작동 원리
+1. 클래스가 있을 때 : 요소에 이미 hidden 클래스가 적용되어 있다면, toggleClass()는 그 클래스를 제거한다
+hidden 클래스가 제거되면 css규칙(display:none)이 더 이상 적용되지 않으므로, 요소가 다시 보이게 된다
+2. 클래스가 없을 때 : 요소에 hidden 클래스가 적용되어 있지 않다면, toggleClass()는 그 클래스를 추가한다
+hidden 클래스가 추가되면 요소에 display:none 스타일이 적용되어 요소가 화면에서 숨겨진다
 
-
-
-
+1. 버튼을 클릭할 때마다 $("#myLayer").toggleClass("hidden"); 코드가 실행
+2. 첫 클릭은 hidden 클래스를 이미지에 추가하여 이미지를 숨긴다(diplay:none) 적용
+3. 두 번째 클릭은 hidden 클래스를 이미지에서 제거하여 이미지가 다시 보이게 한다

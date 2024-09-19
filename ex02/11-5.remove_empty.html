@@ -6,7 +6,21 @@
 <style>
 	div { background-color:pink; }
 </style>
- <script src="../js/jquery-3.6.1.min.js"></script>
+ <script src="../js/jquery-3.7.1.js"></script>
+ <script>
+    $(function(){
+        $("#removeId").on("click",function(){
+            $("div").remove();// div요소를 제거
+            $("div").html("<h4>안녕</h4>"); // div자체를 제거하기 때문에 이 문구가 나오지 않는다
+        });
+
+        $("#emptyId").on("click",function(){
+            $("div").empty();// div 영역 안에 content를 제거
+            $("div").html("<h4>안녕</h4>"); // 
+        });
+     
+    });
+ </script>
 
 </head>
 <body>
