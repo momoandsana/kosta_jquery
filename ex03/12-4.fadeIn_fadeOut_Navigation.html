@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	a{text-decoration:none}
+	.menu .subMenu{display:none;}
+	.sub{display: none;}
+	/* 모두를 감춰야 한다 */
+</style>
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+	// 선택자를 잘 선택해야 하는게 중요
+	$(function(){
+		$(".menu a").click(function(){
+			// console.log(1);
+			let subMenu=$(this).next("ul"); // 다음 형제 노드들 중에서 ul을 찾아
+			// subMenu.toggle();
+			subMenu.fadeToggle();
+		});
+	});
+</script>
+</head>
+<body>
+
+<h4>fadeIn() , fadeOut()을 이용한 navigation</h4>
+   <div id="NAVI">
+			<ul class="menu">	
+				<li>
+					<!-- 클릭되는 대상 -->
+					<a href="#">Java programming</a> 
+					<!-- a와 가까이에 있는 ul 태그 찾기 -->
+					<ul class="subMenu">
+						<li>
+							<a href="#">Java</a>
+							<ul class="sub">
+									<li><a href="#">abstract</a></li>
+									<li><a href="#">interface</a></li>
+									<li><a href="#">inheritance</a></li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="#">Jsp</a>
+								<ul class="sub">
+									<li><a href="#">request</a></li>
+									<li><a href="#">response</a></li>
+									<li><a href="#">session</a></li>
+									<li><a href="#">application</a></li>
+								</ul>
+						</li>
+						
+						<li>
+							<a href="#">Android</a>
+							   <ul class="sub">
+									<li><a href="#">geolocation</a></li>
+									<li><a href="#">network</a></li>
+								</ul>
+						</li>
+						
+						<li>
+							<a href="#">ddddd</a>
+							   <ul class="sub">
+									<li><a href="#">geolocation</a></li>
+									<li><a href="#">network</a></li>
+								</ul>
+						</li>
+						
+						
+					</ul>
+				</li>
+		</ul>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	#prev, #mainPage, #next{float:left}
+    #mainPage{width:100px; overflow: hidden; }
+    
+	#page{width:500px}
+	
+	img{ width:100px ; height:100px;}
+	
+	a{text-decoration:none ; }
+	.disabled{color:gray;pointer-events:none;}
+</style>
+
+
+
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+	$(function(){
+		let curPos=0;
+		const imageW=100;
+		const totalImg=5;
+		const maxPos=(totalImg-1)*imageW; // 이미지의 왼쪽 끝을 0이라고 설정. 가장 오른쪽은 좌표가 400임. 나머지 100은 사진의 폭
+
+		// 이전, 다음 버튼이 눌리고 나서 실행하는 함수
+		const updateButtons=()=>{
+			if(curPos<=0)$("#prev").addClass("disabled");
+			else $("#prev").removeClass("disabled");
+
+			if(curPos>=maxPos)$("#next").addClass("disabled"); // 버튼을 흐리게
+			else("#next").removeClass("disabled");
+		}
+
+		$("#next").click(()=>{
+			if(curPos<maxPos)
+			{
+				curPos+=imageW;
+				$("#page").animate({marginLeft:-curPos+"px"},400);
+				updateButtons();
+			}
+		});
+
+		$("#prev").click(()=>{
+			if(curPos>0)
+			{
+				curPos-=imageW;
+				$("#page").animate({marginLeft:-curPos+"px"},400);
+				updateButtons();
+			}
+		});
+		updateButtons();
+	
+
+		});
+</script>
+</head>
+<body>
+
+<h1>animate 효과</h1>
+   <div id="allPage">
+	 <a href="#" id="prev">이전&nbsp;&nbsp;&nbsp;</a>
+	<div id="mainPage"> <!-- width : 100px; overflow:hidden -->
+		<div id="page"><!-- width : 500px -->
+		 <img src="img/a.jpg"/><img src="img/b.jpg"/><img src="img/c.jpg"/><img src="img/d.jpg"/><img src="img/e.jpg"/>
+	    </div>
+	</div>
+	<a href="#" id="next">&nbsp;&nbsp;&nbsp;다음</a>
+  </div>
+</body>
+
+
+
+</html>
+
+<!-- 이전 다음을 누르면 다음 이미지로 넘어감
+끝까지 가면 다음 버튼이 비활성화
+이전도 마찬가지로 끝까지 가면 비활성화
+
+여기서 mainPage의 width는 100이지만 mainPage 안에 있는 page의 width는 500이다->이미지가 5개니까
+그래서 넘치는 부분은 보이지 않게 하기 위해 overflow:hidden을 사용함->보이는 이미지는 하나
+
+marginLeft를 사용하면 너무 빠르게 움직이니까 animate를 사용해야 한다
+animate에서 100px를 줄이거나 늘리면 된다
+다음->marginLeft 값 줄어야
+사진을 왼쪽으로 땡겨서 오른쪽 사진이 보이게
+이전->marginLeft 값 늘어야
+
+워크샵 jQuery로 바꾸기 -->

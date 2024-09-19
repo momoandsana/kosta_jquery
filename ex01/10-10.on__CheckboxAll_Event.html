@@ -27,7 +27,7 @@
 	$("#chkAll").on("click",function(){
 		//alert($(this));
 
-		$(":checkbox").prop("checked",this.checked); 
+		$(":checkbox").prop("checked",this.checked); // checkbox에 기본으로 있는 checked 속성을 찾아서 this.checked로 업데이트 해줌
 		/*
 		property의 prop
 		 여러개의 선택자를 찾아도 알어서 적용해준다. 모든 체크박스를 선택해줌. 지금 chkAll 의 값이 들어감

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	a{text-decoration:none}
+</style>
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+	$(function(){
+		$("#show").click(function(){
+			// $("img").show(3000,function(){
+			$("img").fadeIn(3000,function(){ // fadeIn은 opactity 조절
+				// show() 진행 후에 해야 할 일 작성 -> function 함수에 콜백으로 만들기
+				$(this)
+				.attr("src","img/jquery.jpg")
+				.css({border:"solid 5px red"})
+			});
+		});
+
+		$("#hide").click(function(){ // 오타 수정
+			// $("img").hide(2000,function(){
+			$("img").fadeOut(2000,function(){
+				$(this)
+				.attr("src","img/heart.png")
+				.css({border:"none"})
+			});
+		});
+		
+		$("#toggle").click(function(){ // 오타 수정
+			// $("img").toggle(50,function(){
+			$("img").fadeToggle(50,function(){
+				// fadeToggle() 후에 추가 작업 없음				
+			});
+		});
+	});
+</script>
+</head>
+<body>
+<div style="text-align: center;">
+<h1>Basic 효과 </h1>
+	<a href="#" id="show">show</a>&nbsp;&nbsp;&nbsp;
+	<a href="#" id="hide">hide</a>&nbsp;&nbsp;&nbsp;
+	<a href="#" id="toggle">toggle</a>
+	
+	<hr/>
+	<img src="img/jpup_id.jpg"/>
+</div>
+</body>
+</html>

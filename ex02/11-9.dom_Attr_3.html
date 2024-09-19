@@ -20,7 +20,8 @@
         $("#product>img").mouseover(function(){
             let imgSrc=$(this).attr("src");//이미지의 경로
 
-            let divW=$("#bigImage").css("width");
+            let divW=$("#bigImage").css("width");// css니까 px단위로 나옴
+          
             let divH=$("#bigImage").css("height");
             /*
             <img src="img/heart.png" id="img" width="50" height="50"/>

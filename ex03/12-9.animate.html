@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+  div { width: 100px; height: 100px; background-color: red; position: absolute; top: 300px; left: 0; }
+  img { position: absolute; top: 150px; left: 0; }
+</style>
+<script src="../js/jquery-3.7.1.js"></script>
+<script>
+	$(function(){
+		$("#moveRight").click(function(){
+			$("img").animate({
+				marginLeft: "200px", // animate에서는 camelCase 사용
+			}, 2000, function(){
+				$(this).attr({ src: "img/jquery.jpg" });
+			});
+		});
+
+		$("#moveLeft").click(function(){
+			let currentWidth = $("img").width();
+			let currentHeight = $("img").height();
+			
+			if (currentWidth > 100 && currentHeight > 100) { // 최소 크기 제한
+				$("img").animate({
+					marginLeft: "0px",
+					width: "-=100px",
+					height: "-=100px",
+					opacity: 1
+				}, 2000, function(){
+					$(this).attr({ src: "img/heart.png" });
+				});
+			}
+		});
+
+		let num = 1; // num 변수 초기화
+		let interval; // setInterval을 담을 변수
+
+		$("#divMove").click(function(){
+			if (!interval) { // 애니메이션이 이미 실행 중인지 확인
+				interval = setInterval(function(){
+					if (num === 1) {
+						$("div").animate({
+							left: "+=500px",
+						}, 200);
+						num++;
+					} else if (num === 2) {
+						$("div").animate({
+							top: "+=500px",
+						}, 200);
+						num++;
+					} else if (num === 3) {
+						$("div").animate({
+							left: "-=500px",
+						}, 200);
+						num++;
+					} else if (num === 4) {
+						$("div").animate({
+							top: "-=500px",
+						}, 200);
+						num = 1; // 다시 1로 초기화하여 순환
+					}
+				}, 200); // 2초마다 애니메이션을 반복 (애니메이션 시간 + 여유 시간)
+			}
+		});
+	});
+</script>
+</head>
+<body>
+
+<h1>animate 효과</h1>
+   <input type="button" value="moveRight" id="moveRight" />
+   <input type="button" value="moveLeft" id="moveLeft" />
+   <input type="button" value="움직이기" id="divMove" />
+   <p />
+   <img src="img/heart.png" width="50" height="50" />
+   <p />
+   <div></div>
+
+</body>
+</html>
