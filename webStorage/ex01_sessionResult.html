@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script>
+        $(function(){
+            
+      //sessionStoreage에 있는 정보 조회하기
+        const getInfo=function(){
+        let len=sessionStorage.length;
+        let str="저장된 개수 : "+len+"<br>";
+        for(let i=0;i<len;i++)
+        {
+          let key=sessionStorage.key(i);
+          let value=sessionStorage.getItem(key);
+          str+=key+" : "+value+"<br>";
+        }
+
+        // div영역에 메세지를 출력
+        $("#result").html(str);
+      }
+      getInfo();
+        })
+    </script>
+</head>
+<body>
+    <h2>sessionStorage 정보 확인하기</h2>
+    <div id="result"></div>
+
+</body>
+</html>

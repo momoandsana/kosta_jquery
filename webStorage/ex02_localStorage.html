@@ -6,8 +6,58 @@
 <style>
  div{width:300px; height:100px ; border: 1px red solid;}
 </style>
-<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.7.1.js"></script>
 
+<!-- local storage는 영구적임
+브라우저를 닫아도 저장되어 있음 -->
+<script>
+   $(function(){
+    $("#btnSave").click(function(){
+        let key=$("#s_key").val();
+        let value=$("#s_value").val();
+
+        if(key && !value)
+        {
+          alert("key와 value를 넣어주세요");
+          return;
+        }
+
+        //저장
+        localStorage.setItem(key,value);
+
+        $("#s_key").val("");
+        $("#s_value").val("");
+        
+        //조회
+        getInfo();
+
+      });// click끝
+
+      $("#btnClear").click(function(){
+        //삭제
+        let key=prompt("삭제할 key?");
+        key && localStorage.removeItem(key); 
+        // 애플리케이션(개발자 도구)에 들어가서 확인 
+    
+        });
+
+      //sessionStoreage에 있는 정보 조회하기
+      const getInfo=function(){
+        let len=localStorage.length;
+        let str="저장된 개수 : "+len+"<br>";
+        for(let i=0;i<len;i++)
+        {
+          let key=localStorage.key(i);
+          let value=localStorage.getItem(key);
+          str+=key+" : "+value+"<br>";
+        }
+
+        // div영역에 메세지를 출력
+        $("#result").html(str);
+      }
+      getInfo();
+  })//ready 끝
+</script>
 
 </head>
 <body>
